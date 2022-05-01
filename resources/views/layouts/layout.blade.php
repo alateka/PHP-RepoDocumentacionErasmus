@@ -9,17 +9,17 @@
     <meta name="theme-color" content="#1885ed">
     <title>@yield('title', 'Erasmus+')</title>
   </head>
-  
+
   <body>
   <header class="header">
     <div class="container header__container">
-        
+
         <div class="header__logo mt-2">
           <button class="openbtn d-lg-none mr-2" onclick="openNav()">&#9776;</button>
           <img class="header__img" style="height: 25px; width: 25px" src="{{asset('img/ue.jpg')}}"> <a href="/" class="header__title text-secondary">Erasmus<span class="header__light">+</span></a>
-        </div> 
-    
-    
+        </div>
+
+
     <div class="header__menu">
       <nav id="navbar" class="header__nav collapse">
         <ul class="header__elenco">
@@ -28,7 +28,7 @@
           <li class="header__el"><a href="{{route('info.documentos')}}"@if(!request()->routeIs('info.documentos')) class="header__link"  @endif>Documentos</a></li>
           <li class="header__el"><a href="{{route('info.listados')}}"@if(!request()->routeIs('info.listados')) class="header__link"  @endif>Listados</a></li>
           @auth
-          
+
           <li class="header__el header__el--blue"><a href="{{ url('/home') }}" class="btn btn--white ml-5">Panel de control</a></li>
           <div class="form-inline float-right">
           <form method="POST" action="{{ route('logout') }}">
@@ -76,9 +76,9 @@
     <a href="{{ route('register') }}"class="text-light">Registrarse</a>
     @endif
 </div>
-  
+
   @yield('content')
-  
+
   <footer class="footer @yield('class-footer')">
     <div class="container">
       <div class="row">
@@ -87,6 +87,7 @@
         <div class="col-md-10 col-xs-6">
           <div class="footer__social">
             <p class="text-light">Copyright 2021 | Antonio Cantos & José Miguel López</p>
+            <p class="text-light">API Integration | Alberto Pérez Fructuoso</p>
           </div>
         </div>
       </div>

@@ -24,11 +24,6 @@ Route::group(['middleware' => config('jetstream.middleware', ['web'])], function
         Route::get('/user/profile', [UserProfileController::class, 'show'])
                     ->name('profile.show');
 
-        // API...
-        if (Jetstream::hasApiFeatures()) {
-            Route::get('/user/api-tokens', [ApiTokenController::class, 'index'])->name('api-tokens.index');
-        }
-
         // Teams...
         if (Jetstream::hasTeamFeatures()) {
             Route::get('/teams/create', [TeamController::class, 'create'])->name('teams.create');

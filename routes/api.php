@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Public
+Route::post('/getoken', [ApiController::class, 'getApiToken']);
+
+// With Auth
+Route::get('/apitest', [ApiController::class, 'apiTest'])->middleware('auth:sanctum');
+Route::post('/uploadfile', [ApiController::class, 'uploadFileViaApi'])->middleware('auth:sanctum');
+
+
