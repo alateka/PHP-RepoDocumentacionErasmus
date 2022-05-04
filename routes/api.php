@@ -21,5 +21,4 @@ Route::post('/getoken', [ApiController::class, 'getApiToken']);
 // With Auth
 Route::get('/apitest', [ApiController::class, 'apiTest'])->middleware('auth:sanctum');
 Route::post('/uploadfile', [ApiController::class, 'uploadFileViaApi'])->middleware('auth:sanctum');
-
-
+Route::get('/getuserdata', [ApiController::class, 'getUserData'])->middleware('auth:sanctum');

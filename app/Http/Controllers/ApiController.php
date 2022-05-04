@@ -59,4 +59,19 @@ class ApiController extends Controller
                                     ], 200);
         }
     }
+
+    public function getUserData()
+    {
+        if ( auth()->user()->verified ) {
+            
+            $user = auth()->user();
+
+            return response()->json([
+                'name' => $user->name,
+                'lastName' => $user->last_name,
+                'email' => $user->email,
+                'date' => $user->fecha_nacimiento
+                ], 200);
+        }
+    }
 }
