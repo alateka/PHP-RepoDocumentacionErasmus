@@ -25,8 +25,8 @@ class ApiController extends Controller
             $token = $user->createToken('auth_token')->plainTextToken;
 
             return response()->json([
-                    'Access Token' => $token,
-                    'Token Type' => 'Bearer',
+                    'AccessToken' => $token,
+                    'TokenType' => 'Bearer',
                     ], 200);
         }
 
@@ -67,11 +67,41 @@ class ApiController extends Controller
             $user = auth()->user();
 
             return response()->json([
-                'name' => $user->name,
-                'lastName' => $user->last_name,
-                'email' => $user->email,
-                'date' => $user->fecha_nacimiento
+                'Name' => $user->name,
+                'LastName' => $user->last_name,
+                'Email' => $user->email,
+                'DNI' => $user->dni,
+                'Date' => $user->fecha_nacimiento
                 ], 200);
         }
+    }
+
+
+
+    public function loginOnAndroidApp(Request $request)
+    {
+        if (!Auth::attempt($request->only('email', 'password')) ) {
+            return response()->json([
+            'Message' => 'Invalid login :('], 401);
+        }
+
+
+        if ( auth()->user()->verified ) {
+            $user = User::where('email', $request['email'])->firstOrFail();
+
+            $token = $user->createToken('auth_token')->plainTextToken;
+
+            return response()->json([
+                    'AccessToken' => $token,
+                    'Name' => $user->name,
+                    'LastName' => $user->last_name,
+                    'Email' => $user->email,
+                    'DNI' => $user->dni,
+                    'Date' => $user->fecha_nacimiento
+                    ], 200);
+        }
+
+        return response()->json([
+            'Error' => 'User email not verified :('], 401);
     }
 }

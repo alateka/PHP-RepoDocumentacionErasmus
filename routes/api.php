@@ -17,6 +17,8 @@ use App\Http\Controllers\ApiController;
 
 // Public
 Route::post('/getoken', [ApiController::class, 'getApiToken']);
+Route::post('/loginonandroidapp', [ApiController::class, 'loginOnAndroidApp']);
+
 
 // With Auth
 Route::get('/apitest', [ApiController::class, 'apiTest'])->middleware('auth:sanctum');
