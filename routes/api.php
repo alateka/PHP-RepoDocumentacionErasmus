@@ -24,3 +24,6 @@ Route::post('/loginonandroidapp', [ApiController::class, 'loginOnAndroidApp']);
 Route::get('/apitest', [ApiController::class, 'apiTest'])->middleware('auth:sanctum');
 Route::post('/uploadfile', [ApiController::class, 'uploadFileViaApi'])->middleware('auth:sanctum');
 Route::get('/getuserdata', [ApiController::class, 'getUserData'])->middleware('auth:sanctum');
+Route::get('/documentlist', [ApiController::class, 'documentList'])->middleware('auth:sanctum');
+Route::post('/updateuser', [ApiController::class, 'updateUserViaAPI'])->middleware('auth:sanctum');
+

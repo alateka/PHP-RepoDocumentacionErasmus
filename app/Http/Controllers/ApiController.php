@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Documento;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\UpdateUserRequest;
+
 
 
 class ApiController extends Controller
@@ -88,7 +90,7 @@ class ApiController extends Controller
 
         if ( auth()->user()->verified ) {
             $user = User::where('email', $request['email'])->firstOrFail();
-
+            $user->tokens()->delete();
             $token = $user->createToken('auth_token')->plainTextToken;
 
             return response()->json([
@@ -97,11 +99,41 @@ class ApiController extends Controller
                     'LastName' => $user->last_name,
                     'Email' => $user->email,
                     'DNI' => $user->dni,
-                    'Date' => $user->fecha_nacimiento
+                    'Date' => $user->fecha_nacimiento,
+                    'Documents' => $user->solicitud->documentos
                     ], 200);
         }
 
         return response()->json([
             'Error' => 'User email not verified :('], 401);
+    }
+
+
+    public function documentList()
+    {
+        if ( auth()->user()->verified ) {
+            $documents = auth()->user()->solicitud->documentos;
+
+            return response()->json([
+                'Data' => $documents
+                ], 200);
+        }
+    }
+    
+
+    public function updateUserViaAPI(UpdateUserRequest $request)
+    {
+        // TODO por hacer
+
+        if ( auth()->user()->verified ) {
+
+            $user = User::where('email', $request['email'])->firstOrFail();
+
+            $user->name = $request['name'];
+
+
+            return response()->json([
+                'STATUS' => 'OK'], 200);
+            }
     }
 }
