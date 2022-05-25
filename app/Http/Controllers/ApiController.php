@@ -1,5 +1,9 @@
 <?php
 
+// Author ==> Alberto Pérez Fructuoso
+// File   ==> ApiController.php
+// Date   ==> 2022/05/21
+
 namespace App\Http\Controllers;
 
 use App\Models\User;
@@ -7,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Documento;
 use Illuminate\Support\Facades\Storage;
-use App\Http\Requests\UpdateUserRequest;
+use App\Models\Ciclo;
 
 
 
@@ -100,7 +104,14 @@ class ApiController extends Controller
                     'Email' => $user->email,
                     'DNI' => $user->dni,
                     'Date' => $user->fecha_nacimiento,
-                    'Documents' => $user->solicitud->documentos
+                    'Documents' => $user->solicitud->documentos,
+                    'CycleID' => $user->ciclo_id,
+                    'CycleName' => Ciclo::where('id', $user->ciclo_id)->firstOrFail()->nombre,
+                    'Nationality' => $user->nacionalidad,
+                    'Locality' => $user->localidad,
+                    'Phone' => $user->telefono,
+                    'Address' => $user->direccion,
+                    'ZIP' => $user->cp
                     ], 200);
         }
 
@@ -121,19 +132,67 @@ class ApiController extends Controller
     }
     
 
-    public function updateUserViaAPI(UpdateUserRequest $request)
+    public function updateUserViaAPI(Request $request, User $user)
     {
-        // TODO por hacer
-
         if ( auth()->user()->verified ) {
+            $input = $request->all();
 
-            $user = User::where('email', $request['email'])->firstOrFail();
+            $user = User::findOrFail(auth()->user()->id);
 
-            $user->name = $request['name'];
+            $user->fill([
+                'name' => $input['name'],
+                'last_name' => $input['last_name'],
+                'email' => $input['email'],
+                'fecha_nacimiento' => $input['birth_date'],
+                'ciclo_id' => Ciclo::where('nombre', $request['cycle_name'])->firstOrFail()->id,
+                'dni' => $input['dni'],
+                'nacionalidad' => $input['nationality'],
+                'telefono' => $input['phone'],
+                'localidad' => $input['locality'],
+                'direccion' => $input['address'],
+                'cp' => $input['zip'],
+            ]);
 
+
+            $user->save();
+            
+            return response()->json([
+                'Status' => 'OK'
+                ], 200);
+            }
+    }
+
+    public function getCycleList()
+    {
+        if ( auth()->user()->verified ) {
+            
+            $ciclos = Ciclo::all();
+
+            $JSONdata = [];
+            for ( $i = 0; $i < count($ciclos); $i++) {
+                $JSONdata[$i] = [
+                    'Name' => $ciclos[$i]->nombre,
+                    'Id' => $ciclos[$i]->id,
+                    'Grado' => $ciclos[$i]->grado,
+                    'Rama' => $ciclos[$i]->rama,
+                ];
+            }
+            return response()->json($JSONdata, 200);
+        }
+    }
+
+    public function removeFileViaApi(Request $request)
+    {
+        if ( auth()->user()->verified ) {
+            $user = auth()->user();
+
+            $doc = Documento::findOrfail($request['id']);
+            Storage::delete($doc->url);
+            $doc->delete();
 
             return response()->json([
-                'STATUS' => 'OK'], 200);
-            }
+                'Status' => 'OK'
+                ], 200);
+        }
     }
 }
