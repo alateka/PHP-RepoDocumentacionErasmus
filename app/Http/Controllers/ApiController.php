@@ -195,4 +195,12 @@ class ApiController extends Controller
                 ], 200);
         }
     }
+
+    public function downloadDocument(Request $request){
+        
+        if ( auth()->user()->verified ) {
+            $doc = Documento::findOrfail($request["id"]);
+            return response()->download(storage_path("app/{$doc->url}"));
+        }
+    }
 }
