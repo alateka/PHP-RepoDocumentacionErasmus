@@ -14,11 +14,9 @@ use App\Http\Controllers\ApiController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
 // Public
 Route::post('/getoken', [ApiController::class, 'getApiToken']);
 Route::post('/loginonandroidapp', [ApiController::class, 'loginOnAndroidApp']);
-
 
 // With Auth
 Route::get('/apitest', [ApiController::class, 'apiTest'])->middleware('auth:sanctum');
