@@ -92,6 +92,7 @@ class CreateSolicitudRequest extends FormRequest
             'cv' => $this->cv,
             'beca' => $this->beca,
             'cursos' => $this->cursos,
+            'recien_titulado' => $this->recien_titulado,
             'baremo' => $this->computeBaremo(),
         ]);
 

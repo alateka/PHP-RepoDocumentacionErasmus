@@ -4,7 +4,6 @@
 // File   ==> api.php
 // Date   ==> 2022/05/29
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApiController;
 

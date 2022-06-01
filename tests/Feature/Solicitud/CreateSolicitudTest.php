@@ -38,6 +38,7 @@ class CreateSolicitudTest extends TestCase
             'cv' => '0',
             'beca' => '1',
             'cursos' => '0',
+            'recien_titulado' => '1'
         ])->assertRedirect('/home');
 
         $this->get('/home')
@@ -69,6 +70,7 @@ class CreateSolicitudTest extends TestCase
             'cv' => '0',
             'beca' => '1',
             'cursos' => '0',
+            'recien_titulado' => '1'
         ])->assertSessionHasErrors('carta');
 
         $this->assertDatabaseMissing('solicitudes', [
@@ -97,6 +99,7 @@ class CreateSolicitudTest extends TestCase
             'cv' => '',
             'beca' => '1',
             'cursos' => '0',
+            'recien_titulado' => '1'
         ])->assertSessionHasErrors('cv');
 
         $this->assertDatabaseMissing('solicitudes', [
@@ -125,6 +128,7 @@ class CreateSolicitudTest extends TestCase
             'cv' => '0',
             'beca' => '',
             'cursos' => '0',
+            'recien_titulado' => '1'
         ])->assertSessionHasErrors('beca');
 
         $this->assertDatabaseMissing('solicitudes', [
@@ -153,6 +157,7 @@ class CreateSolicitudTest extends TestCase
             'cv' => '0',
             'beca' => '1',
             'cursos' => '',
+            'recien_titulado' => '1'
         ])->assertSessionHasErrors('cursos');
 
         $this->assertDatabaseMissing('solicitudes', [
@@ -181,6 +186,7 @@ class CreateSolicitudTest extends TestCase
             'cv' => '0',
             'beca' => '1',
             'cursos' => '0',
+            'recien_titulado' => '1'
         ])->assertRedirect('/home');
 
         $this->delete('/solicitud/'.$user->solicitud->id);
@@ -192,4 +198,32 @@ class CreateSolicitudTest extends TestCase
         ]);
     }
 
+    /** @test */
+    public function recien_titulado_is_boolean()
+    {
+        $ciclo = Ciclo::factory()->create();
+
+        $user = User::factory()->create([
+            'name'  =>  'paco',
+            'last_name' => 'pepe',
+            'admin'     => 0,
+            'ciclo_id' => $ciclo->id,
+            'verified' => 1]);
+        $this->actingAs($user);
+
+        $this->post('/solicitud',[
+            'user_id'    =>  $user->id,
+            'empresa' => 'IES CIERVA',
+            'carta' => '1',
+            'cv' => '0',
+            'beca' => '1',
+            'cursos' => '1',
+            'recien_titulado' => '',
+        ])->assertSessionHasErrors('recien_titulado');
+
+        $this->assertDatabaseMissing('solicitudes', [
+            'user_id' => $user->id,
+
+        ]);
+    }
 }

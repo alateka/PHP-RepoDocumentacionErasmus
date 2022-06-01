@@ -34,7 +34,7 @@ class UserSeeder extends Seeder
             'admin'     => 0,
             'verified' => 1,]);
 
-        foreach (range(1, 1000) as $i){
+        foreach (range(1, 300) as $i){
             $this->createRandomUserWithSolicitud();
         }
 
@@ -76,6 +76,7 @@ class UserSeeder extends Seeder
                 'carta' => rand(0,1),
                 'cv' => rand(0,1),
                 'cursos' => rand(0,1),
+                'recien_titulado' => rand(0,1),
             ]);
         }
 

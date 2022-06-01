@@ -5,17 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\DocumentoController;
 use App\Http\Controllers\ListadoController;
 use App\Http\Controllers\SolicitudController;
-use App\Mail\RegisterMailable;
-use Illuminate\Support\Facades\Mail;
-
-
-
-use App\Models\User;
-use Illuminate\Http\Request;
 
 
 /*

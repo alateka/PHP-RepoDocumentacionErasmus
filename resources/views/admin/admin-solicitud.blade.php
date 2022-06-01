@@ -127,6 +127,10 @@
                 <input class="form-check-input" @if($user->solicitud->cursos) checked @endif type="checkbox" name="cursos" value="1">
                 <label class="form-check-label"  for="inlineCheckbox2">Cursos de formación</label>
               </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" @if($user->solicitud->recien_titulado) checked @endif type="checkbox" name="recien_titulado" value="1">
+                <label class="form-check-label" for="inlineCheckbox3">Recien titulado</label>
+              </div>
         </div>
 
         <div class="form-row mt-4">

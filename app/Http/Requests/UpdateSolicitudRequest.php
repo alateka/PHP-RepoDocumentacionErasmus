@@ -105,6 +105,7 @@ class UpdateSolicitudRequest extends FormRequest
             'conocimientos_linguisticos' => $this->conocimientos_linguisticos ?? 0,
             'evaluacion_docente' => $this->evaluacion_docente ?? 0,
             'cv' => $this->cv ?? 0,
+            'recien_titulado' => $this->recien_titulado ?? 0,
             'baremo' => $this->computeBaremo(),
         ]);
 
@@ -124,6 +125,7 @@ class UpdateSolicitudRequest extends FormRequest
             'conocimientos_linguisticos' => $this->conocimientos_linguisticos ?? 0,
             'evaluacion_docente' => $this->evaluacion_docente ?? 0,
             'cv' => $this->cv ?? 0,
+            'recien_titulado' => $this->recien_titulado ?? 0,
             'baremo' => $this->computeBaremo(),
         ]);
 

@@ -279,6 +279,18 @@
                         <option value="1">Si</option>
                     </select>
                 </div>
+                <div class="form-group col-sm-12 col-md-4">
+                    <label for="codigo_postal">Recien titulado</label>
+                    <select class="form-control" name="recien_titulado">
+                        @if($user->solicitud)
+                            <option <?=($user->solicitud->recien_titulado) ? 'selected' : ''?> value="0">No</option>
+                            <option <?=($user->solicitud->recien_titulado) ? 'selected' : ''?> value="1">Si</option>
+                        @else
+                            <option value="0">No</option>
+                            <option value="1">Si</option>
+                        @endif
+                    </select>
+                </div>
             </div>
 
 

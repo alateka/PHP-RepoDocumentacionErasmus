@@ -3,11 +3,8 @@
 namespace Tests\Feature\Solicitud;
 
 use App\Models\Ciclo;
-use App\Models\Solicitud;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 
 class UpdateSolicitudTest extends TestCase
@@ -42,6 +39,7 @@ class UpdateSolicitudTest extends TestCase
             'cv' => '0',
             'beca' => '1',
             'cursos' => '0',
+            'recien_titulado' => '1'
         ]);
 
         $this->post('/solicitud/update',[
@@ -52,6 +50,7 @@ class UpdateSolicitudTest extends TestCase
             'cv' => '0',
             'beca' => '1',
             'cursos' => '0',
+            'recien_titulado' => '1'
         ]);
 
         $this->assertDatabaseHas('solicitudes', [
@@ -80,6 +79,7 @@ class UpdateSolicitudTest extends TestCase
             'cv' => '0',
             'beca' => '1',
             'cursos' => '0',
+            'recien_titulado' => '1'
         ]);
 
         $this->post('/solicitud/update',[
@@ -90,6 +90,7 @@ class UpdateSolicitudTest extends TestCase
             'cv' => '0',
             'beca' => '1',
             'cursos' => '0',
+            'recien_titulado' => '1'
         ]);
 
         $this->assertDatabaseMissing('solicitudes', [
@@ -118,6 +119,7 @@ class UpdateSolicitudTest extends TestCase
             'cv' => '0',
             'beca' => '1',
             'cursos' => '0',
+            'recien_titulado' => '1'
         ]);
 
         $this->post('/solicitud/update',[
@@ -128,6 +130,7 @@ class UpdateSolicitudTest extends TestCase
             'cv' => '2',
             'beca' => '1',
             'cursos' => '0',
+            'recien_titulado' => '1'
         ]);
 
         $this->assertDatabaseMissing('solicitudes', [
@@ -156,6 +159,7 @@ class UpdateSolicitudTest extends TestCase
             'cv' => '0',
             'beca' => '1',
             'cursos' => '0',
+            'recien_titulado' => '1'
         ]);
 
         $this->post('/solicitud/update',[
@@ -166,6 +170,7 @@ class UpdateSolicitudTest extends TestCase
             'cv' => '0',
             'beca' => '2',
             'cursos' => '0',
+            'recien_titulado' => '1'
         ]);
 
         $this->assertDatabaseMissing('solicitudes', [
@@ -194,6 +199,7 @@ class UpdateSolicitudTest extends TestCase
             'cv' => '0',
             'beca' => '1',
             'cursos' => '0',
+            'recien_titulado' => '1'
         ]);
 
         $this->post('/solicitud/update',[
@@ -204,10 +210,51 @@ class UpdateSolicitudTest extends TestCase
             'cv' => '0',
             'beca' => '1',
             'cursos' => '2',
+            'recien_titulado' => '1'
         ]);
 
         $this->assertDatabaseMissing('solicitudes', [
             'cursos' => '2',
+
+        ]);
+    }
+
+    /** @test */
+    public function recien_titulado_is_boolean()
+    {
+        $ciclo = Ciclo::factory()->create();
+
+        $user = User::factory()->create([
+            'name'  =>  'paco',
+            'last_name' => 'pepe',
+            'admin'     => 0,
+            'ciclo_id' => $ciclo->id,
+            'verified' => 1]);
+        $this->actingAs($user);
+
+        $this->post('/solicitud',[
+            'user_id'    =>  $user->id,
+            'empresa' => 'IES CIERVA',
+            'carta' => '1',
+            'cv' => '0',
+            'beca' => '1',
+            'cursos' => '0',
+            'recien_titulado' => '1'
+        ]);
+
+        $this->post('/solicitud/update',[
+            'solicitud_id'    =>  $user->solicitud->id,
+            'user_id'    =>  $user->id,
+            'empresa' => 'IES CIERVA',
+            'carta' => '1',
+            'cv' => '0',
+            'beca' => '1',
+            'cursos' => '0',
+            'recien_titulado' => '2'
+        ]);
+
+        $this->assertDatabaseMissing('recien_titulado', [
+            'recien_titulado' => '2',
 
         ]);
     }
