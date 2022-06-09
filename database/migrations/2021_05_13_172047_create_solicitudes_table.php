@@ -24,8 +24,9 @@ class CreateSolicitudesTable extends Migration
             $table->float('expediente_academico')->default(0);
             $table->float('evaluacion_docente')->default(0);
             $table->float('conocimientos_linguisticos')->default(0);
-            $table->float('baremo')->nullable();
             $table->boolean('recien_titulado')->default(0);
+            $table->float('aportacion_empresa_alumno')->default(0);
+            $table->float('baremo')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

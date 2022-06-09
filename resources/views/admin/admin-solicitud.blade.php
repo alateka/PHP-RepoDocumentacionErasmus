@@ -154,6 +154,13 @@
                 <input type="hidden" name="baremo" class="form-control">
             </div>        
         </div>
+        <div class="form-row">
+            <div class="form-group col-12">
+                <label for="evaluacion_docente">Aportación de empresa por parte del alumno (MAX 2,00 puntos)</label>
+                <input type="number" step="0.01" name="aportacion_empresa_alumno" class="form-control" value="<?=$user->solicitud->aportacion_empresa_alumno?>">
+                <input type="hidden" name="baremo" class="form-control">
+            </div>        
+        </div>
 
         <h1 style="font-weight: 700; font-size: 1.8em" class="mt-3 text-center text-danger">Baremo provisional: <?=$user->solicitud->baremo ?? '0'?> puntos.</h1>
     

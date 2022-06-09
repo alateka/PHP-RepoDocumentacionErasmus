@@ -24,8 +24,9 @@ class Solicitud extends Model
         'expediente_academico',
         'conocimientos_linguisticos',
         'evaluacion_docente',
+        'recien_titulado',
+        'aportacion_empresa_alumno',
         'baremo',
-        'recien_titulado'
     ];
 
     public function documentos(){

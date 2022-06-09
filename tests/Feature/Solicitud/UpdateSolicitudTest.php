@@ -218,44 +218,4 @@ class UpdateSolicitudTest extends TestCase
 
         ]);
     }
-
-    /** @test */
-    public function recien_titulado_is_boolean()
-    {
-        $ciclo = Ciclo::factory()->create();
-
-        $user = User::factory()->create([
-            'name'  =>  'paco',
-            'last_name' => 'pepe',
-            'admin'     => 0,
-            'ciclo_id' => $ciclo->id,
-            'verified' => 1]);
-        $this->actingAs($user);
-
-        $this->post('/solicitud',[
-            'user_id'    =>  $user->id,
-            'empresa' => 'IES CIERVA',
-            'carta' => '1',
-            'cv' => '0',
-            'beca' => '1',
-            'cursos' => '0',
-            'recien_titulado' => '1'
-        ]);
-
-        $this->post('/solicitud/update',[
-            'solicitud_id'    =>  $user->solicitud->id,
-            'user_id'    =>  $user->id,
-            'empresa' => 'IES CIERVA',
-            'carta' => '1',
-            'cv' => '0',
-            'beca' => '1',
-            'cursos' => '0',
-            'recien_titulado' => '2'
-        ]);
-
-        $this->assertDatabaseMissing('recien_titulado', [
-            'recien_titulado' => '2',
-
-        ]);
-    }
 }

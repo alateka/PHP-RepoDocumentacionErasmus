@@ -197,33 +197,4 @@ class CreateSolicitudTest extends TestCase
 
         ]);
     }
-
-    /** @test */
-    public function recien_titulado_is_boolean()
-    {
-        $ciclo = Ciclo::factory()->create();
-
-        $user = User::factory()->create([
-            'name'  =>  'paco',
-            'last_name' => 'pepe',
-            'admin'     => 0,
-            'ciclo_id' => $ciclo->id,
-            'verified' => 1]);
-        $this->actingAs($user);
-
-        $this->post('/solicitud',[
-            'user_id'    =>  $user->id,
-            'empresa' => 'IES CIERVA',
-            'carta' => '1',
-            'cv' => '0',
-            'beca' => '1',
-            'cursos' => '1',
-            'recien_titulado' => '',
-        ])->assertSessionHasErrors('recien_titulado');
-
-        $this->assertDatabaseMissing('solicitudes', [
-            'user_id' => $user->id,
-
-        ]);
-    }
 }

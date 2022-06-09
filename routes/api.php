@@ -20,4 +20,3 @@ Route::post('/update_user', [ApiController::class, 'updateUserViaAPI'])->middlew
 Route::get('/cycle_list', [ApiController::class, 'getCycleList'])->middleware('auth:sanctum');
 Route::post('/remove_document', [ApiController::class, 'removeFileViaApi'])->middleware('auth:sanctum');
 Route::get('/download_document', [ApiController::class, 'downloadDocument'])->middleware('auth:sanctum');
-

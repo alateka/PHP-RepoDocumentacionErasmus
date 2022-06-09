@@ -38,6 +38,7 @@ class UpdateSolicitudRequest extends FormRequest
             'expediente_academico' => 'numeric|between:0,3',
             'conocimientos_linguisticos' => 'numeric|between:0,3',
             'evaluacion_docente' => 'numeric|between:0,4',
+            'aportacion_empresa_alumno' => 'numeric|between:0,2',
         ];
 
     }
@@ -54,8 +55,9 @@ class UpdateSolicitudRequest extends FormRequest
             'carta.boolean' => 'El valor introducido para el campo Carta no es válido',
             'cv.boolean' => 'El valor introducido para el campo CV no es válido',
             'beca.boolean' => 'El valor introducido para el campo Beca no es válido',
-            'cursos.boolean' => 'El valor introducido para el campo Curso no es válido',1
-
+            'cursos.boolean' => 'El valor introducido para el campo Curso no es válido',
+            'recien_titulado.boolean' => 'El valor introducido para el campo recien titulado no es válido',
+            'aportacion_empresa_alumno.between' => 'La calificación de la Aportación de empresa por parte del alumno debe ser un número entre 0 y 2.',1
         ];
     }
 
@@ -91,6 +93,10 @@ class UpdateSolicitudRequest extends FormRequest
             $baremo += $this->evaluacion_docente;
         }
 
+        if($this->aportacion_empresa_alumno){
+            $baremo += $this->aportacion_empresa_alumno;
+        }
+
         return $baremo;
     }
 
@@ -106,6 +112,7 @@ class UpdateSolicitudRequest extends FormRequest
             'evaluacion_docente' => $this->evaluacion_docente ?? 0,
             'cv' => $this->cv ?? 0,
             'recien_titulado' => $this->recien_titulado ?? 0,
+            'aportacion_empresa_alumno' => $this->aportacion_empresa_alumno ?? 0,
             'baremo' => $this->computeBaremo(),
         ]);
 
@@ -126,6 +133,7 @@ class UpdateSolicitudRequest extends FormRequest
             'evaluacion_docente' => $this->evaluacion_docente ?? 0,
             'cv' => $this->cv ?? 0,
             'recien_titulado' => $this->recien_titulado ?? 0,
+            'aportacion_empresa_alumno' => $this->aportacion_empresa_alumno ?? 0,
             'baremo' => $this->computeBaremo(),
         ]);
 
