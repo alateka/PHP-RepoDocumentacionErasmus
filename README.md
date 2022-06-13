@@ -1,7 +1,7 @@
 ## Gran parte del desarrollo fue realizado por Antonio Cantos & José Miguel López.
 ### El desarrollo de la API para la conexión de la APP Erasmus+ al igual que la propia APP fue desarrollada por Alberto Pérez Fructuoso.
 
-# Configuración del entorno de la aplicación en local Windows
+# Configuración del entorno de la aplicación en local Windows & Linux
 - <p>Para la configuración de la aplicación y su correcto uso, deberemos tener como requisitos PHP 8.0 y tener composer instalado.
 - La lista de pasos a seguir sería la siguiente:</p>
 - - Descargamos la carpeta del proyecto. se puede descargar en un rar o mediante el comando `git clone (url)`.
