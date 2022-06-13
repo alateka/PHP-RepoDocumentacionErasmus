@@ -87,7 +87,7 @@
         <div class="col-md-10 col-xs-6">
           <div class="footer__social">
             <p class="text-light">Copyright 2021 | Antonio Cantos & José Miguel López</p>
-            <p class="text-light">Integración Erasmus APP | Alberto Pérez Fructuoso</p>
+            <p class="text-light">Integración Erasmus+ APP | Alberto Pérez Fructuoso</p>
           </div>
         </div>
       </div>

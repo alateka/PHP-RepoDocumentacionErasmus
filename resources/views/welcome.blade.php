@@ -13,7 +13,11 @@
         <div class="site__box-link justify-content-center">
           <a class="btn btn--active" href="{{ route('register') }}">Regístrate ya</a>
         </div>
-        <img class="site__img" src="{{asset('img/fondo.jpg')}}">
+        <img class="site__img" style="border-radius: 55px; margin-bottom: 31px" src="{{asset('img/fondo.jpg')}}">
+        <video style="border-radius: 31px; border: rgba(0, 63, 114, 0.411) 11px solid"
+                height="287" width="494" autoplay loop muted controls controlsList="nodownload"
+                src="{{asset('video/MasterFinal-erasmus.webm')}}" preload="none">
+        </video>
       </div>
       </div>
       </div>
@@ -134,12 +138,12 @@
       </div>
     </div>
     </div>
-  
+
   <div class="row row--center">
     <h1 class="row__title mb-5">
         Redes sociales</h1>
   </div>
-  
+
   <div class="sect sect--white sect--no-padding">
   <div class="container">
     <div class="row row--center">
@@ -148,27 +152,27 @@
         <img class="partner_img" src="https://image.ibb.co/mOtHRw/fblogo.png">
         </a>
       </div>
-      
+
   <div class="col-md-3  col-xs-6 col-sm-6 partner">
         <a href="#" class="partner__link">
         <img class="partner_img" src="https://image.ibb.co/nfpXRw/twitterlogo.png">
         </a>
       </div>
-      
-      
+
+
   <div class="col-md-3 col-xs-6 col-sm-6 partner">
         <a href="#" class="partner__link">
         <img class="partner_img" src="https://image.ibb.co/imgOYb/googlelogo.png">
         </a>
       </div>
-      
+
   <div class="col-md-3 col-xs-6 col-sm-6 partner">
         <a href="#" class="partner__link">
         <img class="partner_img" src="https://image.ibb.co/ebGAeG/dribbblelogo.png">
         </a>
       </div>
-          
-      
+
+
     </div>
     <div class="row row--center">
       <div class="col-md-3 col-xs-6 col-sm-6 partner">
@@ -176,29 +180,29 @@
         <img class="partner_img" src="https://image.ibb.co/npV8Yb/gitlogo.png">
         </a>
       </div>
-      
+
           <div class="col-md-3 col-xs-6 col-sm-6 partner">
         <a href="#" class="partner__link">
         <img class="partner_img" src="https://image.ibb.co/cGyZ6w/stacklogo.png">
         </a>
       </div>
-      
-      
+
+
           <div class="col-md-3 col-xs-6 col-sm-6 partner">
         <a href="#" class="partner__link">
         <img class="partner_img" src="https://image.ibb.co/ij03zG/inlogo.png">
         </a>
       </div>
-      
+
           <div class="col-md-3 col-xs-6 col-sm-6 partner">
         <a href="#" class="partner__link">
         <img class="partner_img" src="https://image.ibb.co/ekqdzG/codepenlogo.png">
         </a>
       </div>
     </div>
-  </div>    
   </div>
-  
+  </div>
+
   <div class="sect sect--padding-bottom">
     <div class="container">
       <div class="row row--center">
@@ -246,7 +250,7 @@
             <input type="text" placeholder="Apellidos" class="form__field form__text"></input>
             </div>
             </div>
-        
+
           <div class="form-group">
             <div class="form__field--half">
               <input type="text" placeholder="Correo electrónico*" class="form__field form__text"></input>
@@ -255,18 +259,18 @@
             <input type="text" placeholder="Teléfono" class="form__field form__text"></input>
       </div>
             </div>
-    
+
             <div class="form-group">
               <textarea type="text" placeholder="Introduzca su mensaje*" class="form__field form__textarea"></textarea>
               <button class="btn btn--up btn--width" type="submit">Enviar</button>
             </div>
           </form>
-        </div>   
+        </div>
   <div class="col-md-1"></div>
       </div>
     </div>
   </div>
-  
+
   <div class="sect sect--violet ">
     <img src="https://image.ibb.co/fWyVtb/path3762.png" class="career-img">
     <div class="container">
@@ -278,10 +282,12 @@
         </div>
       </div>
     </div>
-    
+
   </div>
 @endsection
 
 @section('js')
-    
+
 @endsection
+
+
