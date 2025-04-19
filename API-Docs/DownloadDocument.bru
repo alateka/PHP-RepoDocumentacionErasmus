@@ -1,0 +1,19 @@
+meta {
+  name: DownloadDocument
+  type: http
+  seq: 5
+}
+
+get {
+  url: http://127.0.0.1/api/download_document?id=4
+  body: none
+  auth: bearer
+}
+
+params:query {
+  id: 4
+}
+
+auth:bearer {
+  token: {{TockenErasmus}}
+}

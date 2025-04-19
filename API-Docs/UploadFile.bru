@@ -1,0 +1,19 @@
+meta {
+  name: UploadFile
+  type: http
+  seq: 10
+}
+
+post {
+  url: http://127.0.0.1/api/uploadfile
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: 151|zPJ2Gb1324gUUE9UmCWxfiGDNu02TUjSzaLIuBvt
+}
+
+body:multipart-form {
+  file: @file()
+}

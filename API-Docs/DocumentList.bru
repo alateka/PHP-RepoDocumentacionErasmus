@@ -1,0 +1,15 @@
+meta {
+  name: DocumentList
+  type: http
+  seq: 4
+}
+
+get {
+  url: http://127.0.0.1/api/document_list
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{TockenErasmus}}
+}

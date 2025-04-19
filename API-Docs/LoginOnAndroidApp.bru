@@ -1,0 +1,17 @@
+meta {
+  name: LoginOnAndroidApp
+  type: http
+  seq: 8
+}
+
+post {
+  url: http://127.0.0.1/api/loginonandroidapp?name=ApiToken&email=pepe@mail.es&password=12345678
+  body: none
+  auth: none
+}
+
+params:query {
+  name: ApiToken
+  email: pepe@mail.es
+  password: 12345678
+}

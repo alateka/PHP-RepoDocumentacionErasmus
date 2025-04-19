@@ -1,0 +1,19 @@
+meta {
+  name: RemoveDocument
+  type: http
+  seq: 7
+}
+
+post {
+  url: http://127.0.0.1/api/remove_document?id=11
+  body: none
+  auth: bearer
+}
+
+params:query {
+  id: 11
+}
+
+auth:bearer {
+  token: {{TockenErasmus}}
+}

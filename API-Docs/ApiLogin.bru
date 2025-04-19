@@ -1,0 +1,17 @@
+meta {
+  name: ApiLogin
+  type: http
+  seq: 6
+}
+
+post {
+  url: http://127.0.0.1/api/getoken?name=ApiToken&email=pepe@mail.es&password=12345678
+  body: multipartForm
+  auth: none
+}
+
+params:query {
+  name: ApiToken
+  email: pepe@mail.es
+  password: 12345678
+}

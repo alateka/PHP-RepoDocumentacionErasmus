@@ -1,0 +1,29 @@
+meta {
+  name: UpdateUserData
+  type: http
+  seq: 9
+}
+
+post {
+  url: http://127.0.0.1/api/updateuser?name=Antonio&last_name=Pesquero&email=pepe@mail.es&fecha_nacimiento=2006-03-24&ciclo_id=1&dni=77777777P&nacionalidad=Spain&telefono=854545214&localidad=Sweden&direccion=874 Calle el polaco&cp=3009
+  body: multipartForm
+  auth: bearer
+}
+
+params:query {
+  name: Antonio
+  last_name: Pesquero
+  email: pepe@mail.es
+  fecha_nacimiento: 2006-03-24
+  ciclo_id: 1
+  dni: 77777777P
+  nacionalidad: Spain
+  telefono: 854545214
+  localidad: Sweden
+  direccion: 874 Calle el polaco
+  cp: 3009
+}
+
+auth:bearer {
+  token: 37|PqbPQHPQ9D2DoWF78WzNKipE2dbr2WXKkRsEZoXH
+}
